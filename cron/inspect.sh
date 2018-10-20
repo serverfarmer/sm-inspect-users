@@ -2,13 +2,10 @@
 . /opt/farm/scripts/init
 . /opt/farm/scripts/functions.custom
 
-
 out=/var/cache/farm
-path=/etc/local/.farm
 admin=`primary_admin_account`
-servers=`cat $path/virtual.hosts $path/physical.hosts $path/cloud.hosts $path/lxc.hosts $path/workstation.hosts $path/problematic.hosts |grep -v ^#`
 
-for server in $servers; do
+for server in `/opt/farm/ext/inspect-users/utils/get-hosts.sh`; do
 
 	if [[ $server =~ ^[a-z0-9.-]+$ ]]; then
 		server="$server::"

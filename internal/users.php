@@ -11,7 +11,7 @@ $minuid = 200;
 $maxuid = 65500;
 
 $required_groups = array();
-$ignored_users = array("newrelic", "ubuntu");
+$ignored_users = array("newrelic", "ubuntu", "libvirt-qemu");
 $ignored_passwords = array("root");
 $ignored_supplemental_system_groups = array("audio", "bluetooth", "cdrom", "dialout", "dip", "floppy", "games", "lpadmin", "netdev", "video");
 

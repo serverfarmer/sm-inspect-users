@@ -61,6 +61,7 @@ foreach ($lines as $line) {
 $data = execute("cat /etc/passwd", $hostname, $port, $user, $sshkey);
 $lines = explode("\n", $data);
 $users = array();
+$keys = array();
 
 foreach ($lines as $line) {
 	if (empty($line)) continue;
@@ -82,6 +83,18 @@ foreach ($lines as $line) {
 			$users[$login]["usergroup"] = true;
 		else if ($gid >= $mingid)
 			$required_groups[$gid] = $groups[$gid]["group"];
+	}
+}
+
+foreach ($users as $login => $entry) {
+	$home = $entry["home"];
+	$data = execute("cat $home/.ssh/authorized_keys 2>/dev/null", $hostname, $port, $user, $sshkey);
+	$lines = explode("\n", $data);
+
+	foreach ($lines as $line) {
+		$line = trim($line);
+		if (!empty($line) && substr($line, 0, 3) == "ssh")
+			$keys[$login][] = $line;
 	}
 }
 
@@ -165,6 +178,11 @@ foreach ($users as $login => $data)
 echo "\n";
 foreach ($shadow as $login => $password)
 	echo "shadow $login $password[0] (changed $password[1])\n";
+
+echo "\n";
+foreach ($keys as $login => $lines)
+	foreach ($lines as $line)
+		echo "key $login $line\n";
 
 echo "\n";
 foreach ($users as $login => $data) {

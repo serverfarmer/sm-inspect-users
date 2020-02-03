@@ -1,9 +1,8 @@
 #!/bin/sh
 . /opt/farm/scripts/init
-. /opt/farm/scripts/functions.custom
 
 out=/var/cache/farm
-admin=`primary_admin_account`
+admin=`/opt/farm/config/get-primary-admin-account.sh`
 
 for server in `/opt/farm/ext/inspect-users/utils/get-hosts.sh`; do
 

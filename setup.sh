@@ -9,6 +9,6 @@ mkdir -p   /var/cache/farm
 chmod 0710 /var/cache/farm
 chown root:www-data /var/cache/farm
 
-if ! grep -q /opt/farm/ext/inspect-users/cron /etc/crontab; then
-	echo "48 6 * * * root /opt/farm/ext/inspect-users/cron/inspect.sh" >>/etc/crontab
+if ! grep -q /opt/farm/mgr/inspect-users/cron /etc/crontab; then
+	echo "48 6 * * * root /opt/farm/mgr/inspect-users/cron/inspect.sh" >>/etc/crontab
 fi

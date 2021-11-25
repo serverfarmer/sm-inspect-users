@@ -189,6 +189,6 @@ foreach ($users as $login => $data) {
 	if (strpos($data["home"], "/srv/") === 0 || strpos($data["home"], "/data/") === 0 || strpos($data["home"], "/var/") === 0 || strpos($data["home"], "/opt/") === 0) {
 		$home = $data["home"];
 		$parent = dirname($home);
-		echo "rsync -e \"ssh -i ~/.ssh/key-$target\" -av $target:$home $parent\n";
+		echo "rsync -e \"ssh -i ~/.serverfarmer/ssh/key-$target\" -av $target:$home $parent\n";
 	}
 }

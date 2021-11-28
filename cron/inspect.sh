@@ -1,7 +1,7 @@
 #!/bin/sh
 . /opt/farm/scripts/init
 
-out=/var/cache/farm
+out=~/.serverfarmer/inspection
 admin=`/opt/farm/config/get-primary-admin-account.sh`
 
 for server in `/opt/farm/mgr/inspect-users/utils/get-hosts.sh`; do

@@ -5,9 +5,9 @@
 /opt/farm/scripts/setup/extension.sh sf-php
 
 echo "setting up base directories and files"
-mkdir -p   /var/cache/farm
-chmod 0710 /var/cache/farm
-chown root:www-data /var/cache/farm
+mkdir -p ~/.serverfarmer/inspection
+chmod 0710 ~/.serverfarmer ~/.serverfarmer/inspection
+chown root:www-data ~/.serverfarmer ~/.serverfarmer/inspection
 
 if ! grep -q /opt/farm/mgr/inspect-users/cron /etc/crontab; then
 	echo "48 6 * * * root /opt/farm/mgr/inspect-users/cron/inspect.sh" >>/etc/crontab

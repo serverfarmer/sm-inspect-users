@@ -18,16 +18,16 @@ Next, for each server it creates a script that can recreate existing:
 
 on a fresh system.
 
-## Advantages over generic backup/export tools?
+## Advantages over generic backup/export tools
 
 Traditional, generic tools that export user credentials, generate complicated commands, that duplicate various default options, eg.
 
 `useradd -m -d /home/steve steve`
 
-This example may look ok at the first sight, but if you manage X servers, each with different set of users and their specific options, it becomes a problem.
+This example may look ok at the first sight, but if you manage X servers, each with different set of users and their specific options, then having scripts duplicating unnecessary details like `-d /home/steve`, becomes a problem.
 
 Therefore, what this extension really does, is:
 
-- analyze the above files
-- compute, which user options follow defaults
+- analyze the files mentioned above
+- compute, which user options follow default values and can be skipped
 - generate optimized scripts, with minimal set of options

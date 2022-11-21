@@ -24,7 +24,9 @@ Traditional, generic tools that export user credentials, generate complicated co
 
 `useradd -m -d /home/steve steve`
 
-This example may look ok at the first sight, but if you manage X servers, each with different set of users and their specific options, then having scripts duplicating unnecessary details like `-d /home/steve`, becomes a problem.
+This example may look ok at the first sight, but if you manage X servers, each with different set of users and their specific options, then having scripts duplicating unnecessary details like `-d /home/steve`, becomes a problem. This is much better:
+
+`useradd -m steve`
 
 Therefore, what this extension really does, is:
 
